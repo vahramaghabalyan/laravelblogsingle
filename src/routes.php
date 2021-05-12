@@ -39,7 +39,7 @@ Route::group(['middleware' => ['web'], 'namespace' => '\BinshopsBlog\Controllers
     });
 
     /** The main public facing tutorials routes */
-    /*Route::group(['prefix' => config('binshopsblog.tutorial_prefix', 'tutorial'), 'namespace' => '\BinshopsBlog\Controllers\Tutorial'], function () {
+    Route::group(['prefix' => config('binshopsblog.tutorial_prefix', 'tutorial'), 'namespace' => '\BinshopsBlog\Controllers\Tutorial'], function () {
 
         Route::get('/', 'BinshopsTutorialReaderController@index')
             ->name('binshopstutorial.index');
@@ -50,7 +50,7 @@ Route::group(['middleware' => ['web'], 'namespace' => '\BinshopsBlog\Controllers
         Route::get('/feed', 'BinshopsTutorialRssFeedController@feed')
             ->name('binshopstutorial.feed'); //RSS feed
 
-        Route::get('/{subcategories}', 'BinshopsTutorialReaderController@view_category')->where('subcategories', '^[a-zA-Z0-9-_\/]+$')->name('binshopsblog.view_category');
+        Route::get('/{subcategories}', 'BinshopsTutorialReaderController@view_category')->where('subcategories', '^[a-zA-Z0-9-_\/]+$')->name('binshopstutorial.view_category');
 
         Route::get('/{blogPostSlug}',
             'BinshopsTutorialReaderController@viewSinglePost')
@@ -62,7 +62,7 @@ Route::group(['middleware' => ['web'], 'namespace' => '\BinshopsBlog\Controllers
                 'BinshopsTutorialCommentWriterController@addNewComment')
                 ->name('binshopstutorial.comments.add_new_comment');
         });
-    });*/
+    });
 
 
     /** Admin backend routes - CRUD for posts, categories, and approving/deleting submitted comments */
