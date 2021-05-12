@@ -1,15 +1,6 @@
 {
     "name": "vahramaghabalyan/laravelblogsingle",
-    "description": "Simple blog package (with admin panel) for Laravel (6.x and 7.x). Includes all views, controllers, routes and can add a blog to any existing Laravel app. Fully customisable blog (view, urls, and many other options). Includes image uploads and a pretty admin interface to manage your blog. Defaults to /blog but you can change it to anything.",
-
-    "authors": [
-        {
-            "name": "Binshops",
-            "homepage": "https://github.com/binshops/laravel-blog",
-            "role": "owner",
-            "email": "contact@binshops.com"
-        }
-    ],
+    "description": "Simple blog package (with admin panel) for Laravel (8.x) based on Binshops. Includes all views, controllers, routes and can add a blog to any existing Laravel app. Fully customisable blog (view, urls, and many other options). Includes image uploads and a pretty admin interface to manage your blog. Defaults to /blog but you can change it to anything.",
     "require": {
         "vahramaghabalyan/laravelblogsingle": "dev-main",
         "cviebrock/eloquent-sluggable": "~8.0|~7.0|~6.0|~4.8|~4.7|~4.6|~4.5",
