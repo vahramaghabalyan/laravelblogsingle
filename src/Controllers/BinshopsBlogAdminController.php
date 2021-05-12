@@ -72,13 +72,15 @@ class BinshopsBlogAdminController extends Controller
     {
         $new_blog_post = new BinshopsBlogPost($request->all());
 
-        $this->processUploadedImages($request, $new_blog_post);
-
         if (!$new_blog_post->posted_at) {
             $new_blog_post->posted_at = Carbon::now();
         }
 
         $new_blog_post->user_id = \Auth::user()->id;
+        $new_blog_post->save();
+
+        $this->processUploadedImages($request, $new_blog_post);
+        
         $new_blog_post->save();
 
         $new_blog_post->categories()->sync($request->categories());
