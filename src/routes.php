@@ -17,6 +17,9 @@ Route::group(['middleware' => ['web'], 'namespace' => '\BinshopsBlog\Controllers
 
         Route::get('/category{subcategories}', 'BinshopsBlogReaderController@view_category')->where('subcategories', '^[a-zA-Z0-9-_\/]+$')->name('binshopsblog.view_category');
 
+        Route::get('/author/{author_id}', 'BinshopsBlogReaderController@author')
+            ->name('binshopsblog.view_author');
+
 //        Route::get('/category/{categorySlug}',
 //            'BinshopsBlogReaderController@view_category')
 //            ->name('binshopsblog.view_category');
@@ -84,6 +87,10 @@ Route::group(['middleware' => ['web'], 'namespace' => '\BinshopsBlog\Controllers
         Route::get('/edit_post/{blogPostId}',
             'BinshopsBlogAdminController@edit_post')
             ->name('binshopsblog.admin.edit_post');
+
+        Route::get('/edit_profile',
+            'BinshopsBlogAdminController@edit_profile')
+            ->name('binshopsblog.admin.edit_profile');
 
         Route::patch('/edit_post/{blogPostId}',
             'BinshopsBlogAdminController@update_post')

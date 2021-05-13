@@ -80,13 +80,13 @@ class BinshopsBlogAdminController extends Controller
         $new_blog_post->save();
 
         $this->processUploadedImages($request, $new_blog_post);
-        
         $new_blog_post->save();
 
         $new_blog_post->categories()->sync($request->categories());
 
         Helpers::flash_message("Added post");
         event(new BlogPostAdded($new_blog_post));
+
         return redirect($new_blog_post->edit_url());
     }
 
@@ -100,6 +100,17 @@ class BinshopsBlogAdminController extends Controller
     {
         $post = BinshopsBlogPost::findOrFail($blogPostId);
         return view("BinshopsBlog_admin::posts.edit_post")->withPost($post);
+    }
+
+    /**
+     * Show form to edit profile
+     *
+     * @param
+     * @return mixed
+     */
+    public function edit_profile()
+    {
+        return view("BinshopsBlog_admin::profile.edit_profile");
     }
 
     /**

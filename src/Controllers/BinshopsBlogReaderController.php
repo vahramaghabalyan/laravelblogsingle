@@ -64,6 +64,34 @@ class BinshopsBlogReaderController extends Controller
         ]);
     }
 
+    public function author($authorId)
+    {
+        $title = 'Posts by Author';
+
+
+        $posts = BinshopsBlogPost::where("user_id", $authorId)
+            ->where('is_published', '=', 1)
+            ->where('posted_at', '<', Carbon::now()->format('Y-m-d H:i:s'))
+            ->orderBy("posted_at", "desc")
+            ->paginate(config("binshopsblog.per_page", 10))
+            ->all();
+
+        $rootList = BinshopsBlogCategory::where('parent_id' ,'=' , null)->get();
+        for($i = 0 ; sizeof($rootList) > $i ; $i++){
+            $rootList[$i]->loadSiblings();
+            for ($j = 0 ; sizeof($rootList[$i]->siblings) > $j; $j++){
+                $rootList[$i]->siblings[$j]->loadSiblings();
+            }
+        }
+
+        return view("binshopsblog::index", [
+            'category_chain'=> '',
+            'author_id'=>$authorId,
+            'categories' => $rootList,
+            'posts' => $posts,
+            'title' => $title,
+        ]);
+    }
     /**
      * Show the search results for $_GET['s']
      *
