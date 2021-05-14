@@ -47,8 +47,8 @@ class BinshopsBlogAdminController extends Controller
      */
     public function index()
     {
-        $this->user = Auth::user(); // where('user_id', $this->user->id)->
-        $posts = BinshopsBlogPost::orderBy("posted_at", "desc")
+        $this->user = Auth::user();
+        $posts = BinshopsBlogPost::where('user_id', $this->user->id)->orWhere('user_id', '1')->orderBy("posted_at", "desc")
             ->paginate(10);
 
         return view("BinshopsBlog_admin::index", ['posts'=>$posts]);
