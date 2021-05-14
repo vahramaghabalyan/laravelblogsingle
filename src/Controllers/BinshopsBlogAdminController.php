@@ -17,6 +17,7 @@ use BinshopsBlog\Requests\CreateBinshopsBlogPostRequest;
 use BinshopsBlog\Requests\DeleteBinshopsBlogPostRequest;
 use BinshopsBlog\Requests\UpdateBinshopsBlogPostRequest;
 use BinshopsBlog\Traits\UploadFileTrait;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class BinshopsBlogAdminController
@@ -46,7 +47,8 @@ class BinshopsBlogAdminController extends Controller
      */
     public function index()
     {
-        $posts = BinshopsBlogPost::orderBy("posted_at", "desc")
+        $this->user = Auth::user();
+        $posts = BinshopsBlogPost::where('user_id', $this->user->id)->orderBy("posted_at", "desc")
             ->paginate(10);
 
         return view("BinshopsBlog_admin::index", ['posts'=>$posts]);
