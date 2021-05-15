@@ -1,4 +1,5 @@
-@extends("layouts.app",['title'=>"Saved comment"])
+{{--@extends("layouts.app",['title'=>"Saved comment"])--}}
+@extends('layouts.vertical.master')
 @section("content")
 
     <div class='text-center'>
@@ -8,7 +9,7 @@
             <p>After an admin user approves the comment, it'll appear on the site!</p>
         @endif
 
-        <a href='{{$blog_post->url()}}' class='btn btn-primary'>Back to blog post</a>
+        <a href='{{$blog_post->url(app('request')->get('locale'))}}' class='btn btn-primary'>Back to blog post</a>
     </div>
 
 @endsection

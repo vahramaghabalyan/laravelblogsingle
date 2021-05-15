@@ -2,6 +2,6 @@
 @section("content")
     <h5>Admin - Editing profile</h5>
 
-    
+    <livewire:user.profile.edit />
 
 @endsection

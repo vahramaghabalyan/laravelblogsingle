@@ -90,9 +90,7 @@
         <li class="list-group-item list-group-color  justify-content-between lh-condensed">
             <div>
                 <h6 class="my-0"><a href="{{ route('binshopsblog.admin.images.upload') }}">Upload images</a></h6>
-
                 <div class="list-group ">
-
                     <a href='{{ route('binshopsblog.admin.images.all') }}'
                        class='list-group-item list-group-color list-group-item list-group-color-action  @if(\Request::route()->getName() === 'binshopsblog.admin.images.all') active @endif  '><i
                                 class="fa fa-picture-o fa-fw" aria-hidden="true"></i>
@@ -106,4 +104,16 @@
             </div>
         </li>
     @endif
+    <li class="list-group-item list-group-color  justify-content-between lh-condensed">
+        <div>
+            <h6 class="my-0"><a href="{{ route('binshopsblog.admin.edit_profile') }}">User Profile</a></h6>
+            <div class="list-group ">
+                <a href='{{ route('binshopsblog.admin.edit_profile') }}' class='list-group-item list-group-color list-group-item list-group-color-action
+                    @if(\Request::route()->getName() === 'binshopsblog.admin.edit_profile') active @endif  '>
+                    <i class="fa fa-user-o fa-fw" aria-hidden="true"></i>
+                    Update author data</a>
+
+            </div>
+        </div>
+    </li>
 </ul>

@@ -12,7 +12,7 @@
          {{--is logged in + canManageBinshopsBlogPosts() == true, so show a detailed error--}}
         <div class='alert alert-danger'>Custom blog post blade view file
                         (<code>{{$post->full_view_file_path()}}</code>) not found. <a
-                    href='https://github.com/binshops/laravel-blog'
+                    href='https://binshops.binshops.com/laravel/packages/help-documentation/laravel-blog-package-binshopsblog'
                     target='_blank'>See Laravel Blog Package help here</a>.
                     </div>
 

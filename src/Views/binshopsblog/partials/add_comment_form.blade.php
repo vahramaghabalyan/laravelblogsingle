@@ -1,6 +1,7 @@
-<div class='add_comment_area'>
+
+<div class='container' style="max-width:1000px">
     <h5 class='text-center'>Add a comment</h5>
-    <form method='post' action='{{route("binshopsblog.comments.add_new_comment", $post->slug)}}'>
+    <form method='post' action='{{route("binshopsblog.comments.add_new_comment",[app('request')->get('locale'),$post->slug])}}'>
         @csrf
 
 
@@ -85,9 +86,9 @@
 
 
         <div class="form-group ">
-            <input type='submit' class="form-control input-sm btn btn-success "
-                   value='Add Comment'>
+            <input type='submit' class="btn btn-success" value='Add Comment'>
         </div>
 
     </form>
 </div>
+

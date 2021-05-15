@@ -1,27 +1,18 @@
-
-<div class="col-md-6">
-    <div class="blog-item">
-
-        <div class='text-center blog-image'>
-            <?=$post->image_tag("medium", true, ''); ?>
-        </div>
-        <div class="blog-inner-item">
-            <h3 class=''><a href='{{$post->url()}}'>{{$post->title}}</a></h3>
-            <h5 class=''>{{$post->subtitle}}</h5>
-
-            @if (config('binshopsblog.show_full_text_at_list'))
-                <p>{!! $post->post_body_output() !!}</p>
-            @else
-                <p>{!! mb_strimwidth($post->post_body_output(), 0, 400, "...") !!}</p>
-            @endif
-
-            <div class="post-details-bottom">
-                <span class="light-text">Authored by: </span> {{$post->author->name}} <span class="light-text">Posted at: </span> {{date('d M Y ', strtotime($post->posted_at))}}
-            </div>
-            <div class='text-center'>
-                <a href="{{$post->url()}}" class="btn btn-primary">View Post</a>
+<div class="card w-100">
+    <div class="blog-box blog-list row">
+        <div class="col-sm-4">{!! $post->image_tag("medium", true, 'img-fluid sm-100-w') !!}</div>
+        <div class="col-sm-8">
+            <div class="blog-details">
+                <div class="blog-date digits"><span></span>{{ $post->posted_at->format('m/d/Y') }}</div>
+                <h6><a href="{{$post->url()}}">{{ $post->title }}</a></h6>
+                <div class="blog-bottom-content">
+                    <ul class="blog-social">
+                        <li>by: <a href="{{ route('binshopsblog.view_author', ['author_id' => $post->author->id]) }}">{{ $post->author->name }}</a></li>
+                    </ul>
+                    <hr>
+                    <p class="mt-0">{{mb_strimwidth(strip_tags($post->post_body_output()), 0, 400, "...")}}</p>
+                </div>
             </div>
         </div>
     </div>
-
 </div>

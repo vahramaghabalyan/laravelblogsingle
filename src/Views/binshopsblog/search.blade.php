@@ -1,4 +1,5 @@
-@extends("layouts.app",['title'=>$title])
+{{--@extends("layouts.app",['title'=>$title])--}}
+@extends('layouts.vertical.master')
 @section("content")
 
     <div class='row'>
@@ -12,7 +13,7 @@
                         @if(isset($result->indexable))
                             @php $search_count += $search_count + 1; @endphp
                             <?php $post = $result->indexable; ?>
-                            @if($post && is_a($post,\BinshopsBlog\Models\BinshopsBlogPost::class))
+                            @if($post && is_a($post,\BinshopsBlog\Models\BinshopsPostTranslation::class))
                                 <h2>Search result #{{$search_count}}</h2>
                                 @include("binshopsblog::partials.index_loop")
                             @else
