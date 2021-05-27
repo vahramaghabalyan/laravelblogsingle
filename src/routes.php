@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => ['web'], 'namespace' => '\BinshopsBlog\Controllers'], function () {
+Route::group(['middleware' => ['web','OnlyBlogAdmin'], 'namespace' => '\BinshopsBlog\Controllers'], function () {
 
 
     /** The main public facing blog routes - show all posts, view a category, rss feed, view a single post, also the add comment route */
